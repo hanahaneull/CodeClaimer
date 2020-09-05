@@ -1,0 +1,19 @@
+{
+  "name": "CodeClaimer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "chalk": "^4.1.0",
+    "discord.js": "^11.6.4",
+    "js-yaml": "^3.14.0"
+  }
+}
