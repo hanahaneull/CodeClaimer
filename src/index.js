@@ -21,6 +21,7 @@ for (let token of tokens) {
         $referrer: '',
         $referring_domain: '',
     }
+
     client.on('ready', () => {
         console.log(`
         ${Chalk.cyanBright('============================')}
