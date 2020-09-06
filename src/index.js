@@ -14,7 +14,7 @@ process.title = 'CodeClaimer (fweak)';
 for (let token of tokens) {
     const client = new Client({ fetchAllMembers: false, messageCacheMaxSize: 100 });
     client.rest.userAgentManager.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36';
-    client.ws.properties = {
+    client.options.ws.properties = {
         $os: process ? process.platform : 'Discord Android',
         $browser: 'Discord Android',
         $device: 'Discord Android',
