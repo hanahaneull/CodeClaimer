@@ -4,8 +4,8 @@ const { readFileSync } = require('fs');
 const { safeLoad } = require('js-yaml');
 const Chalk = require('chalk');
 
-let tokens = readFileSync('tokens.txt', 'utf8').replace(/\r/g, '').split('\n');
-let config = safeLoad(readFileSync('config.yaml'));
+let tokens = readFileSync('./src/tokens.txt', 'utf8').replace(/\r/g, '').split('\n');
+let config = safeLoad(readFileSync('./src/config.yaml'));
 
 var count = 0;
 var total = 0;
