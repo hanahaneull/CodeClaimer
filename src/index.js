@@ -3,7 +3,6 @@ const { Client } = require('discord.js');
 const { readFileSync } = require('fs');
 const { safeLoad } = require('js-yaml');
 const Chalk = require('chalk');
-const chalk = require('chalk');
 
 let tokens = readFileSync('tokens.txt', 'utf8').replace(/\r/g, '').split('\n');
 let config = safeLoad(readFileSync('config.yaml'));
@@ -15,7 +14,13 @@ process.title = 'CodeClaimer (fweak)';
 for (let token of tokens) {
     const client = new Client({ fetchAllMembers: false, messageCacheMaxSize: 100 });
     client.rest.userAgentManager.userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36';
-
+    client.ws.properties = {
+        $os: process ? process.platform : 'Discord Android',
+        $browser: 'Discord Android',
+        $device: 'Discord Android',
+        $referrer: '',
+        $referring_domain: '',
+    }
     client.on('ready', () => {
         console.log(`
         ${Chalk.cyanBright('============================')}
@@ -26,7 +31,7 @@ for (let token of tokens) {
         `)
     });
 
-    client.on('message',  async(msg) => {
+    client.on('message', async (msg) => {
         var invites = msg.content.match(/(discord.gg|discord.com\/invite)\/\w+/gi);
         var nitros = msg.content.match(/(discord.gift|discord.com\/gifts)\/\w+/gi);
         if (config.toggles.join4join && invites && invites[0]) await joinServer(invites[0].split('/').pop(), new Date());
@@ -34,7 +39,7 @@ for (let token of tokens) {
     });
 
     try {
-        client.login(token).catch(() => {})
+        client.login(token).catch(() => { })
     } catch (err) {
         continue;
     }
