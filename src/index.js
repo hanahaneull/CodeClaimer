@@ -54,6 +54,7 @@ async function joinServer(code, startTime) {
 }
 
 async function redeemNitro(code, channelId, startTime) {
+    if (code.length <= 15) return console.log(`        ${Chalk.redBright("FAKE")} ${code} - Fake Gift Code : .${(new Date() - startTime)}ms`);
     total++;
     process.title = `CodeClaimer (fweak) : ${count}/${total}`;
     const request = await post(`https://discord.com/api/v8/entitlments/gift-codes/${code}/redeem`, { channel_id: channelId, payment_source_id: null }, { headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36', 'Authorization': config.details.token, 'Content-Type': 'application/json' } }).catch(() => { });
